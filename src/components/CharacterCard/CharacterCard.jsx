@@ -11,8 +11,7 @@ import {
 import propTypes from 'prop-types';
 
 const CharacterCard = ({ character }) => {
-  const { id, name, status, species, type, gender, location, image } =
-    character;
+  const { id, name, status, species, type, gender, origin, image } = character;
 
   const theme = useMantineTheme();
 
@@ -31,15 +30,15 @@ const CharacterCard = ({ character }) => {
       style={{ height: 400, maxWidth: 250 }}
     >
       <Card.Section>
-        {/* <Badge
+        <Badge
           color={badgeColor[status] || 'gray'}
           size='lg'
           variant='filled'
           style={{ position: 'absolute', right: 5, top: 220, zIndex: 10 }}
         >
           {`${status}`}
-        </Badge> */}
-        {/* <Badge
+        </Badge>
+        <Badge
           color='dark'
           size='lg'
           variant='filled'
@@ -52,7 +51,7 @@ const CharacterCard = ({ character }) => {
           }}
         >
           {`#${id}`}
-        </Badge> */}
+        </Badge>
         <Image src={image} width={250} height='auto' alt={name} fit='contain' />
       </Card.Section>
       <Group
@@ -71,7 +70,7 @@ const CharacterCard = ({ character }) => {
       <Text size='sm' style={{ color: secondaryColor, lineHeight: 1.5 }}>
         <Text size='sm' component='span' weight={700}>
           Gender:
-        </Text>
+        </Text>{' '}
         {gender}
       </Text>
       <Text
@@ -80,9 +79,9 @@ const CharacterCard = ({ character }) => {
         lineClamp={2}
       >
         <Text size='sm' component='span' weight={700}>
-          Last Location:
-        </Text>
-        {location.name}
+          Origin:
+        </Text>{' '}
+        {origin.name}
       </Text>
     </Card>
   );
@@ -96,6 +95,7 @@ CharacterCard.propTypes = {
     species: propTypes.string,
     type: propTypes.string,
     gender: propTypes.string,
+    origin: propTypes.shape({ name: propTypes.string }),
     location: propTypes.shape({ name: propTypes.string }),
     created: propTypes.string,
     image: propTypes.string,

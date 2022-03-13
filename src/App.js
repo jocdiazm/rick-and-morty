@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Pagination } from '@mantine/core';
 import { useState } from 'react';
 
