@@ -1,32 +1,41 @@
 /* eslint-disable no-unused-vars */
-import { SimpleGrid } from '@mantine/core';
-import { useEffect, useState } from 'react';
-import CharacterCard from './components/CharacterCard';
+import { Pagination } from '@mantine/core';
+import { useState } from 'react';
 
 import './App.css';
 import CharacterGrid from './components/CharacterGrid';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
   const [activePage, setActivePage] = useState(1);
-  const [pages, setPages] = useState();
+  const [info, setInfo] = useState({});
 
-  useEffect(() => {
-    const getCharacters = async () => {
-      setLoading(true);
-      const currentPageUrl = `https://rickandmortyapi.com/api/character?page=${activePage}`;
-      const res = await fetch(currentPageUrl, { method: 'GET' });
-      const data = await res.json();
-      setCharacters(data.results);
-      setPages(data.info.pages);
-      setLoading(false);
-    };
-    getCharacters();
-  }, [activePage]);
   return (
     <div className='App'>
-      <CharacterGrid characters={characters} />
+      <SearchBar
+        characters={characters}
+        setcharacters={setCharacters}
+        activepage={activePage}
+        setactivepage={setActivePage}
+        info={info}
+        setinfo={setInfo}
+      />
+      {characters?.length ? (
+        <>
+          <Pagination
+            style={{ marginBottom: 20, marginTop: 20 }}
+            total={info.pages}
+            page={activePage}
+            onChange={setActivePage}
+            size='sm'
+            noWrap
+          />
+          <CharacterGrid characters={characters} />
+        </>
+      ) : (
+        'Nothing to show here'
+      )}
     </div>
   );
 };
