@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   Card,
   Image,
@@ -11,7 +10,7 @@ import {
 import propTypes from 'prop-types';
 
 const CharacterCard = ({ character }) => {
-  const { id, name, status, species, type, gender, origin, image } = character;
+  const { id, name, status, species, gender, origin, image } = character;
 
   const theme = useMantineTheme();
 
@@ -93,11 +92,8 @@ CharacterCard.propTypes = {
     name: propTypes.string,
     status: propTypes.string,
     species: propTypes.string,
-    type: propTypes.string,
     gender: propTypes.string,
     origin: propTypes.shape({ name: propTypes.string }),
-    location: propTypes.shape({ name: propTypes.string }),
-    created: propTypes.string,
     image: propTypes.string,
   }).isRequired,
 };

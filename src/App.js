@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import './App.css';
 import CharacterGrid from './components/CharacterGrid';
+import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
       ) : (
         'Nothing to show here'
       )}
+      <Footer />
     </div>
   );
 };

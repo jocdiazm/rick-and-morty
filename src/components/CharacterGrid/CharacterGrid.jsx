@@ -18,7 +18,7 @@ const CharacterGrid = ({ characters }) => {
       >
         {characters.map((character) => (
           <CharacterCard
-            key={`character-${character.id}`}
+            key={`charactercard-${character.id}`}
             character={character}
           />
         ))}
@@ -34,10 +34,8 @@ CharacterGrid.propTypes = {
       name: propTypes.string,
       status: propTypes.string,
       species: propTypes.string,
-      type: propTypes.string,
       gender: propTypes.string,
-      location: propTypes.shape({ name: propTypes.string }),
-      created: propTypes.string,
+      origin: propTypes.shape({ name: propTypes.string }),
       image: propTypes.string,
     }),
   ).isRequired,
